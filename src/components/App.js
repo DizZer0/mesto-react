@@ -1,30 +1,15 @@
 import React from 'react';
-import logo from '../images/header-logo.svg'
 import '../index.css';
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer'
 
 function App() {
   return (
     <div className="page">
-    <header className="header">
-      <img className="logo header__logo" src={logo} alt="логотип сайта mesto russian" />
-    </header>
-    <main className="content">
-      <section className="profile">
-        <img  alt="аватарка пользователя" className="profile__avatar" />
-        <button className="profile__avatar-btn"></button>
-        <div className="profile__info">
-          <h1 className="profile__name">Жак-Ив Кусто</h1>
-          <h2 className="profile__status">Исследователь океана</h2>
-          <button className="profile__edit-button" type="button"></button>
-        </div>
-        <button className="profile__add-button" type="button"></button>
-      </section>
-      <section className="photo-grid">
-      </section>
-    </main>
-    <footer className="footer">
-      <p className="footer__copyright">© 2020 Mesto Russia</p>
-    </footer>
+      <Header />
+      <Main />
+      <Footer />
     <div className="popup popup_edit-profile ">
       <div className="popup__container">
         <button className="popup__exit-button" type="button"></button>
