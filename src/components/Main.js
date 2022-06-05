@@ -1,11 +1,13 @@
 import React from "react";
 import api from "../utils/Api"
+import Card from "./Card"
 
 function Main(props) {
-  const [userName, setUserName] = React.useState()
-  const [userDescription, setUserDescription] = React.useState()
-  const [userAvatar, setUserAvatar] = React.useState()
-
+  const [userName, setUserName] = React.useState('')
+  const [userDescription, setUserDescription] = React.useState('')
+  const [userAvatar, setUserAvatar] = React.useState('')
+  const [cards, setCards] = React.useState([])
+ 
   React.useEffect(() => {
     api.getUserInfo()
       .then((res) => {
@@ -13,7 +15,12 @@ function Main(props) {
         setUserDescription(res.about) 
         setUserAvatar(res.avatar)
       })
-  })
+    
+    api.getCardItems()
+      .then((res) => {
+        setCards(res)
+      })
+  }, [])
   return (
     <main className="content">
       <section className="profile">
@@ -27,8 +34,10 @@ function Main(props) {
         <button className="profile__add-button" type="button" onClick={props.onAddPlace}></button>
       </section>
       <section className="photo-grid">
+      {cards.map(card => <Card name={card.name} link={card.link} likes={card.likes.length} onCardClick={props.onCardClick}/>)}
       </section>
     </main>
   )
 }
+
  export default Main
