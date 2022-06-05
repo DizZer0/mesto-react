@@ -15,11 +15,13 @@ function Main(props) {
         setUserDescription(res.about) 
         setUserAvatar(res.avatar)
       })
+      .catch(err => console.log(err))
     
     api.getCardItems()
       .then((res) => {
         setCards(res)
       })
+      .catch(err => console.log(err))
   }, [])
   return (
     <main className="content">
@@ -34,7 +36,7 @@ function Main(props) {
         <button className="profile__add-button" type="button" onClick={props.onAddPlace}></button>
       </section>
       <section className="photo-grid">
-      {cards.map(card => <Card name={card.name} link={card.link} likes={card.likes.length} onCardClick={props.onCardClick}/>)}
+      {cards.map(card => <Card key={card._id} name={card.name} link={card.link} likes={card.likes.length} onCardClick={props.onCardClick}/>)}
       </section>
     </main>
   )

@@ -1,6 +1,6 @@
 import React from "react";
 
-function PopupAddForm() {
+function PopupAddPhoto() {
   return (
     <>
       <h2 className="form-change__title">Новое место</h2>
@@ -10,7 +10,8 @@ function PopupAddForm() {
         <input id="link-input" type="url" className="form-change__text add-photo__text-link" required name="link" placeholder="Ссылка на картинку" /> 
         <span className="form-change__input-error link-input-error"></span>
       </fieldset>
-      <button className="form-change__save-button add-photo__save-button" type="submit">Создать</button>
     </>  
   )
 }
+
+export default PopupAddPhoto
