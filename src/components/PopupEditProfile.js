@@ -10,7 +10,8 @@ function PopupEditProfile() {
         <input id="job-input" type="text" className="form-change__text edit-profile__text-job" minlength="2" maxlength="200" required  name='about' placeholder="Кем вы работаете?" />
         <span className="form-change__input-error job-input-error"></span>
       </fieldset>
-      <button className="form-change__save-button edit-profile__save-button" type="submit">Сохранить</button>
     </>
   )
 }
+
+export default PopupEditProfile
