@@ -55,8 +55,10 @@ class Api {
     })
     .then(res => this._parseResponse(res))
   }
-  subCardLike(data) {
-    return fetch(`${this._groupId}cards/${data._id}/likes`, {
+  
+  _subCardLike(data) {
+    console.log('sub')
+    return fetch(`${this._groupId}cards/${data}/likes`, {
       method: 'PUT',
       headers: {
         authorization: this._token
@@ -72,12 +74,13 @@ class Api {
         'Content-type': 'application/json'
       },
       body: JSON.stringify({
-        avatar: data.avatar
+        avatar: data
       })
     }).then(res => this._parseResponse(res))
   }
-  delCardLike(data) {
-    return fetch(`${this._groupId}cards/${data._id}/likes`, {
+  _delCardLike(data) {
+    console.log('del')
+    return fetch(`${this._groupId}cards/${data}/likes`, {
       method: 'DELETE',
       headers: {
         authorization: this._token
@@ -86,13 +89,16 @@ class Api {
     .then(res => this._parseResponse(res))
   }
   delСardItem(data) {
-    return fetch(`${this._groupId}cards/${data._id}`, {
+    return fetch(`${this._groupId}cards/${data}`, {
       method: 'DELETE',
       headers: {
         authorization: this._token
       }
     })
     .then(res => this._parseResponse(res))
+  }
+  changeLikeCardStatus(data, isLiked) {
+    return isLiked ? this._subCardLike(data) : this._delCardLike(data)
   }
 }
 

@@ -7,7 +7,7 @@ function PopupWithForm(props) {
         <button className="popup__exit-button" type="button" onClick={props.onClose}></button>
         <form action="#"  className={`form-change ${props.name}`} name={props.name} novalidate>
           {props.children}  
-          <button className={`form-change__save-button ${props.name}__button`}>{props.textBtn}</button>
+          <button className={`form-change__save-button ${props.name}__button`} onClick={props.onSubmit}>{props.textBtn}</button>
         </form>
       </div>
     </div>
