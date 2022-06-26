@@ -23,12 +23,10 @@ function EditProfilePopup(props) {
 
   function handleSubmit(e) {
     e.preventDefault()
-
     props.onUpdateUser({
       name,
       about: description
     })
-    props.onClose()
   }
   return (
     <PopupWithForm

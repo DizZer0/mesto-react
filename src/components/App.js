@@ -17,7 +17,7 @@ function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
-  const [currentUser, setCurrentUser] = React.useState([])
+  const [currentUser, setCurrentUser] = React.useState({})
   const [selectedCard, setSeletedCard] = React.useState({
     active: false,
     src: '',
@@ -75,20 +75,29 @@ function App() {
 
   function handleUpdateUser (data) {
     api.subUserInfo(data)
-      .then(res => setCurrentUser(res))
+      .then((res) => {
+        setCurrentUser(res)
+        closeAllPopups()
+      })
       .catch(err => console.log(err))
   }
 
   function handleUpdateAvatar (data) {
     console.log(data)
     api.subAvatarPhoto(data)
-      .then(res => setCurrentUser(res))
+      .then((res) => {
+        setCurrentUser(res)
+        closeAllPopups()
+      })
       .catch(err => console.log(err))
   }
 
   function handleUpdateCards(data) {
     api.subCardItem(data)
-      .then(res => setCards([res, ...cards]))
+      .then((res) => {
+        setCards([res, ...cards])
+        closeAllPopups()
+      })
       .catch(err => console.log(err))
   }
   function closeAllPopups() {

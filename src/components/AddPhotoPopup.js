@@ -17,12 +17,10 @@ function AddPhotoPopup(props) {
 
   function handleSubmit(e) {
     e.preventDefault()
-
     props.onUpdateCards({
       name,
       link
     })
-    props.onClose()
   }
 
   return (

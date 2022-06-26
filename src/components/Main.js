@@ -16,12 +16,22 @@ function Main(props) {
         <div className="profile__info">
           <h1 className="profile__name">{currentUser.name}</h1>
           <h2 className="profile__status">{currentUser.about}</h2>
-          <button className="profile__edit-button" type="button" onClick={props.onEditProfile}></button>
+          <button className="profile__edit-button" type="button" onClick={props.onEditProfile} />
         </div>
         <button className="profile__add-button" type="button" onClick={props.onAddPlace}></button>
       </section>
       <section className="photo-grid">
-      {props.cards.map(card => <Card key={card._id} card={card} ownerId={card.owner._id} name={card.name} link={card.link} likes={card.likes} onCardDelete={props.onCardDelete} onCardLike={props.onCardLike} onCardClick={props.onCardClick}/>)}
+      {props.cards.map(card => 
+        <Card
+          key={card._id}
+          card={card}
+          ownerId={card.owner._id} name={card.name}
+          link={card.link} 
+          likes={card.likes} 
+          onCardDelete={props.onCardDelete} 
+          onCardLike={props.onCardLike} 
+          onCardClick={props.onCardClick}/>
+      )}
       </section>
     </main>
   )
